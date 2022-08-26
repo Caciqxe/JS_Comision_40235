@@ -32,6 +32,7 @@ if (x<0) {
     }
 }
 
+
 /*
 En este trabajo hice el código del FizzBuzz donde al iniciar pedirá
 el número sobre el cual comenzará a ejecutar el código repitiéndose
