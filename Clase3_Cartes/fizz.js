@@ -31,3 +31,11 @@ if (x<0) {
 
     }
 }
+
+/*
+En este trabajo hice el código del FizzBuzz donde al iniciar pedirá
+el número sobre el cual comenzará a ejecutar el código repitiéndose
+hasta llegar a 1000 donde lo mostrara en la consola.
+
+Además de la consola hice pruebas para que lo escribiera en el documento.
+*/
