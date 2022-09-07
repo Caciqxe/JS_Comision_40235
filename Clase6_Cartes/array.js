@@ -2,9 +2,7 @@
 let correos = [];
 let nuevo_correo = document.getElementsByClassName('mail')[0];
 let mostrar = document.getElementsByClassName('mostrar_correos')[0]; 
-
-// Evento
-//respuesta.addEventListener('sumbit',AgregarCorreo);
+let numero = document.getElementsByClassName('numero_correos')[0]; 
 
 //Funcion
 function AgregarCorreo() {
@@ -20,6 +18,7 @@ function AgregarCorreo() {
         console.log(correos);
     
         mostrar.innerHTML = correos;
+        numero.innerHTML = correos.length;
         nuevo_correo.value = "";
     }
 }
