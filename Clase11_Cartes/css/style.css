@@ -1,0 +1,11 @@
+.activo {
+    display: none;
+}
+
+.boton_pestaña.active {
+    background:white
+}
+
+.activo.active {
+    display: block;
+}
