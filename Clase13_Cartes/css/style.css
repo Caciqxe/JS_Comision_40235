@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@500&display=swap");
+body {
+  background-color: whitesmoke;
+  color: blue;
+  font-family: 'Assistant'; }
+
+.interfaz {
+  display: flex;
+  justify-content: space-between; }
+  .interfaz .productos {
+    display: flex;
+    flex-direction: column; }
+  .interfaz .precio_unit {
+    display: flex;
+    flex-direction: column; }
+  .interfaz .cantidad {
+    display: flex;
+    flex-direction: column;
+    width: 5%; }
+  .interfaz .precio_total {
+    display: flex;
+    flex-direction: column; }
+  .interfaz span {
+    margin-top: 5%; }
+  .interfaz button {
+    margin-top: 5%; }
