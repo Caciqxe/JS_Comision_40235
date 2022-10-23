@@ -5,6 +5,7 @@ let carta = document.getElementById('carta')
 console.log(duda);
 console.log(boton);
 console.log(carta);
+console.log(Math.random());
 
 boton.addEventListener("click", triger)
 

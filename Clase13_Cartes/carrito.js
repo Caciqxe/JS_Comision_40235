@@ -103,3 +103,7 @@ function suma1(){
         backgroundColor: "#bc544b",
     }).showToast();
 }
+
+while (condition) {
+    
+}
