@@ -1,3 +1,29 @@
-body{
-    background-color: #e6e6e6;
+body {
+    background-image: linear-gradient(45deg, #caa2ab 10%, transparent 0%), linear-gradient(45deg, #d1a6b0 20%, transparent 0%), linear-gradient(45deg, #ddabb7 30%, transparent 0%), linear-gradient(45deg, #e8b0bd 40%, transparent 0%), linear-gradient(45deg, #f1b3c2 50%, transparent 0%), linear-gradient(45deg, #caa2ab 60%, transparent 0%), linear-gradient(45deg, #d1a6b0 70%, transparent 0%), linear-gradient(45deg, #ddabb7 80%, transparent 0%), linear-gradient(45deg, #e8b0bd 90%, transparent 0%), linear-gradient(45deg, #f1b3c2 100%, transparent 0%);
+    background-size: 100% 1px;
+    font-family: 'Noto Sans', sans-serif;
+
+    #por_elegir{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .card_opcion{
+            margin-left: 2%;
+            width: 25%;
+
+            p{
+                text-align: left;
+            }
+
+            img{
+                border: #000 2px dashed;
+            }
+        }
+    }
+    
+    .div_feedback{
+        margin-top: 5%;
+    }
+
 }

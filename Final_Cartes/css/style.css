@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap");
+body {
+  background-image: linear-gradient(45deg, #caa2ab 10%, transparent 0%), linear-gradient(45deg, #d1a6b0 20%, transparent 0%), linear-gradient(45deg, #ddabb7 30%, transparent 0%), linear-gradient(45deg, #e8b0bd 40%, transparent 0%), linear-gradient(45deg, #f1b3c2 50%, transparent 0%), linear-gradient(45deg, #caa2ab 60%, transparent 0%), linear-gradient(45deg, #d1a6b0 70%, transparent 0%), linear-gradient(45deg, #ddabb7 80%, transparent 0%), linear-gradient(45deg, #e8b0bd 90%, transparent 0%), linear-gradient(45deg, #f1b3c2 100%, transparent 0%);
+  background-size: 100% 1px;
+  font-family: 'Noto Sans', sans-serif; }
+  body #por_elegir {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    body #por_elegir .card_opcion {
+      margin-left: 2%;
+      width: 25%; }
+      body #por_elegir .card_opcion p {
+        text-align: left; }
+      body #por_elegir .card_opcion img {
+        border: #000 2px dashed; }
+  body .div_feedback {
+    margin-top: 5%; }

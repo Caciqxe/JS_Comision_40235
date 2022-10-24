@@ -8,13 +8,20 @@
     <title>Document</title>
 </head>
 <body>
-    Ingrese N° del pokedex: 
-    <input type="text" id="duda"> 
-    <button id="gatillante">Consultar</button>
+    Primero tienes que decidir si quieres consultar un pokemon aleatorio u elegir uno por el número de su pokedex:
+    <div>
+        Ingrese N° del pokedex: 
+        <input type="text" id="duda">
+    </div>
+    <button id="gatillante">Consultar el número ingresado</button>
+    <button id="random">Consultar Random</button>
     <div id="carta"></div>
     <div id="opciones"></div>
-    <div id="opciones_mejores"></div>
     <div id="por_elegir"></div>
+    <div class="div_feedback">
+        Si tienes algún problema con el funcionamiento, por favor apretar el siguiente botón 
+        <button class="feedback">Aprietame!</button>
+    </div>
     <script src="script/consulta.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

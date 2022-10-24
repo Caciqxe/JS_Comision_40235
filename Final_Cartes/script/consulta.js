@@ -1,9 +1,11 @@
 let duda = document.getElementById('duda');
-let boton = document.getElementById('gatillante');
+let boton_consulta = document.getElementById('gatillante')
+let boton = document.getElementById('random');
 let carta = document.getElementById('carta');
 let opciones = document.getElementById('opciones');
-let opciones_mejores = document.getElementById('opciones_mejores');
 let por_elegir = document.getElementById('por_elegir');
+let feedback = document.getElementsByClassName('feedback')[0];
+let link_feedback = "https://github.com/Caciqxe/JS_Comision_40235/tree/master/Final_Cartes"
 
 var botones_nuevos = [];
 var lista_nombre_tipos = []
@@ -12,14 +14,47 @@ var lista_pokemones_posibles = []
 var nombre_tipo = []
 var url_tipo = []
 
+feedback.addEventListener("click", reportar_error)
+boton_consulta.addEventListener("click", triger_consulta)
 boton.addEventListener("click", triger)
+
+function reportar_error() {
+    Swal.fire({
+        title: "Lamentamos los inconvenientes",
+        html:`¡Si gusta puede dejar un comentario en el repositorio de <a href="${link_feedback}">GitHub</a> para revisarlo!`,
+        icon: "error",
+        background: "#e6e6e6",
+    })
+}
+
+function triger_consulta() {
+    let consultar = duda.value;
+    carta.innerHTML = "";
+    por_elegir.innerHTML = ""
+    opciones.innerHTML = ""
+    por_elegir.innerHTML = ""
+    lista_nombre_tipos = []
+    lista_url_tipos = []
+
+    if (isNaN(parseInt(consultar)) || ((parseInt(consultar)>898) || parseInt(consultar)<1)) {
+        Swal.fire({
+            title: "Ingrese un N° valido de pokedex porfavor (1 - 898)",
+            icon: "error",
+            background: "#e6e6e6",
+        })
+    } else {
+        let url = `https://pokeapi.co/api/v2/pokemon-form/${consultar}`
+        rescatar_info(url)
+    }
+}
+
 
 function triger() {
     let random1 = Math.floor(Math.random()*10)
     let random2 = Math.floor(Math.random()*10) 
     let random3 = Math.floor(Math.random()*10)
     let pokemon_enemigo = parseInt('' + random1 + random2 + random3)
-    console.log(pokemon_enemigo);
+    duda.value = ""
     carta.innerHTML = "";
     por_elegir.innerHTML = ""
     lista_nombre_tipos = []
@@ -47,19 +82,19 @@ function rescatar_info(url) {
             const type_pokemon_url_2 = info.types[1]['type']['url']
             rescatar_lista_tipos_2(type_pokemon_url_1,type_pokemon_url_2)
             carta.innerHTML += `<div class="card">
-            <p>nombre: ${nombre_pokemon}</p>
+            <p>Nombre: ${nombre_pokemon}</p>
             <img src="${sprite_pokemon}" alt="">
-            <p>tipo 1: ${type_pokemon1}</p>
-            <p>tipo 2: ${type_pokemon2}</p>
+            <p>Tipo 1: ${type_pokemon1}</p>
+            <p>Tipo 2: ${type_pokemon2}</p>
             </div>`;
         } else {
             const type_pokemon1 = info.types[0]['type']['name']
             const type_pokemon_url_1 = info.types[0]['type']['url']
             rescatar_lista_tipo(type_pokemon_url_1)
             carta.innerHTML += `<div class="card">
-            <p>nombre: ${nombre_pokemon}</p>
+            <p>Nombre: ${nombre_pokemon}</p>
             <img src="${sprite_pokemon}" alt="">
-            <p>tipo 1: ${type_pokemon1}</p>
+            <p>Tipo 1: ${type_pokemon1}</p>
             </div>`;
             ;
             lista_nombre_tipos.splice(0,lista_nombre_tipos.length)
@@ -79,80 +114,25 @@ function rescatar_lista_tipo(url) {
     .then(info => info.json())
     .then(info => {
     let lista = info.damage_relations['double_damage_from']
-    //console.log(Object.keys(lista));
     numero_elementos = Object.keys(lista).length
-    //console.log(Object.keys(lista).length);
     let i = 0
     while (i < numero_elementos) {
         lista_nombre_tipos.push(lista[i]['name']);
         lista_url_tipos.push(lista[i]['url'])
-        //console.log(lista_nombre_tipos);
         i++
     }
     console.log(lista_nombre_tipos);
 
     opciones.innerHTML = ""
-    opciones_mejores.innerHTML = ""
     crear_botones()
     })
 }
 
-/* function rescatar_lista_tipo(url) {
-    console.log(url);
-    fetch(url)
-    .then(info => info.json())
-    .then(info => {
-    let lista = info.damage_relations['double_damage_from']
-    //console.log(Object.keys(lista));
-    numero_elementos = Object.keys(lista).length
-    //console.log(Object.keys(lista).length);
-    let i = 0
-    while (i < numero_elementos) {
-        nombre_tipo[i] = lista[i]['name'];
-        url_tipo[i] = lista[i]['url'];
-        var obj = {}
-        obj[nombre_tipo[i]] = url_tipo[i];
-        lista_nombre_tipos.push(obj);
-        //console.log(lista_nombre_tipos);
-        i++
-    }
-    console.log(Object.keys(lista_nombre_tipos));
-
-    opciones.innerHTML = ""
-    opciones_mejores.innerHTML = ""
-    crear_botones()
-    })
-} */
-
-
-/* function crear_botones () {
-    if (ver_si_unico(lista_nombre_tipos)) {
-        for (var i = 0; i < lista_nombre_tipos.length; i++) {
-            opciones.innerHTML += `<button id="${lista_nombre_tipos[i]}">` + `${lista_nombre_tipos[i]}` + "</button>";
-            botones_nuevos[i] = document.getElementById(lista_nombre_tipos[i]).value;
-            console.log(botones_nuevos[0]);
-        }
-    } else {
-        opciones.innerHTML += `<button>lawea</button>`;
-    }
-} */
-
-/* function crear_botones () {
-    for (var i = 0; i < lista_nombre_tipos.length; i++) {
-        if (ver_si_unico(lista_nombre_tipos[i])) {
-            opciones.innerHTML += `<button id="${lista_nombre_tipos[i]}">` + `${lista_nombre_tipos[i]}` + "</button>";
-        } else {
-            opciones_mejores.innerHTML += `<button id="lawea"> lawea </button>`;
-        } 
-    }
-} */
-
 function crear_botones () {
     if (ver_si_unico(lista_nombre_tipos)) {
         for (var i = 0; i < lista_nombre_tipos.length; i++) {
-            opciones.innerHTML += `<button id="${lista_url_tipos[i]}">` + `${lista_nombre_tipos[i]}` + "</button>";
+            opciones.innerHTML += `<button id="${lista_url_tipos[i]}">` + `${lista_nombre_tipos[i].toUpperCase()}` + "</button>";
             botones_nuevos[i] = document.getElementById(lista_url_tipos[i]);
-            console.log(botones_nuevos[i]);
         }
 
         let escuchar_click = document.getElementsByTagName("button")
@@ -209,8 +189,9 @@ function recomendar_pokemon(url) {
     .then(info => {
         let nombre_pokemon = info.pokemon['name']
         let sprite_pokemon = info.sprites['front_default']
-        por_elegir.innerHTML += `
-        <p>nombre: ${nombre_pokemon} </p>
-        <img src="${sprite_pokemon}" alt="">`;
+        por_elegir.innerHTML += `<div class="card_opcion">
+        <p>Nombre: ${nombre_pokemon} </p>
+        <img src="${sprite_pokemon}" alt="">
+        </div">`;
     })
 }
